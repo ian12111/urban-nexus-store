@@ -19,150 +19,388 @@
       font-family: 'Helvetica Neue', Arial, sans-serif;
       overflow-x: hidden;
     }
-    .accent-yellow { color: #FFE44D; }
-    .bg-accent-yellow { background-color: #FFE44D; }
-    .border-yellow { border-color: #FFE44D; }
+
+    .accent-yellow {
+      color: #FFE44D;
+    }
+
+    .bg-accent-yellow {
+      background-color: #FFE44D;
+    }
+
+    .border-yellow {
+      border-color: #FFE44D;
+    }
+
+    /* Imágenes de productos */
+    .product-image {
+      max-width: 85%;
+      max-height: 85%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
   </style>
 </head>
+
 <body class="antialiased">
 
   <!-- Navbar Fija -->
   <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-black/80 backdrop-blur-md border-b border-white/10">
-    <span class="text-lg font-bold tracking-widest text-white">URBAN NEXUS</span>
-    <a href="https://ig.me/m/urban_nexus.store" target="_blank" class="bg-accent-yellow text-black text-sm font-bold px-4 py-2 rounded-full hover:bg-yellow-300 transition">
+    <span class="text-lg font-bold tracking-widest text-white">
+      URBAN NEXUS
+    </span>
+
+    <a
+      href="https://ig.me/m/urban_nexus.store"
+      target="_blank"
+      class="bg-accent-yellow text-black text-sm font-bold px-4 py-2 rounded-full hover:bg-yellow-300 transition"
+    >
       Pedir por DM
     </a>
   </nav>
 
+
   <!-- 1. Hero Section -->
   <section class="h-screen flex flex-col justify-center items-center text-center px-4 relative">
-    <span id="hero-tag" class="text-xs uppercase tracking-widest text-gray-400 mb-2 opacity-0">[ BUENOS AIRES · AMBA ]</span>
-    <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 opacity-0 transform translate-y-8">
-      TECNOLOGÍA PRÁCTICA <br><span class="accent-yellow">Y ACCESIBLE</span>
+
+    <span
+      id="hero-tag"
+      class="text-xs uppercase tracking-widest text-gray-400 mb-2 opacity-0"
+    >
+      [ BUENOS AIRES · AMBA ]
+    </span>
+
+    <h1
+      id="hero-title"
+      class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 opacity-0 transform translate-y-8"
+    >
+      TECNOLOGÍA PRÁCTICA <br>
+      <span class="accent-yellow">Y ACCESIBLE</span>
     </h1>
-    <p id="hero-sub" class="text-gray-400 text-sm md:text-lg max-w-lg mb-8 opacity-0 transform translate-y-8">
+
+    <p
+      id="hero-sub"
+      class="text-gray-400 text-sm md:text-lg max-w-lg mb-8 opacity-0 transform translate-y-8"
+    >
       Garantía de +30 días y envíos a todo el país.
     </p>
-    <a id="hero-btn" href="#catalogo" class="border border-white/20 hover:border-white text-white text-sm px-8 py-3 rounded-full font-semibold transition opacity-0">
+
+    <a
+      id="hero-btn"
+      href="#catalogo"
+      class="border border-white/20 hover:border-white text-white text-sm px-8 py-3 rounded-full font-semibold transition opacity-0"
+    >
       Ver Catálogo ↓
     </a>
+
   </section>
+
 
   <!-- 2. Sección de Garantías -->
   <section class="py-20 px-6 max-w-5xl mx-auto border-t border-white/10">
-    <h2 class="text-2xl font-bold mb-12 text-center tracking-wide">EL ESTÁNDAR NEXUS</h2>
+
+    <h2 class="text-2xl font-bold mb-12 text-center tracking-wide">
+      EL ESTÁNDAR NEXUS
+    </h2>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
       <div class="card bg-[#1C1C1C] p-6 rounded-2xl border border-white/5 opacity-0 transform translate-y-8">
         <div class="accent-yellow text-2xl font-bold mb-3">01</div>
         <h3 class="text-lg font-bold mb-1">Garantía +30 Días</h3>
-        <p class="text-gray-400 text-xs leading-relaxed">Respaldo directo ante cualquier fallo técnico. Probamos el producto antes de despacharlo.</p>
+        <p class="text-gray-400 text-xs leading-relaxed">
+          Respaldo directo ante cualquier fallo técnico. Probamos el producto antes de despacharlo.
+        </p>
       </div>
 
       <div class="card bg-[#1C1C1C] p-6 rounded-2xl border border-white/5 opacity-0 transform translate-y-8">
         <div class="accent-yellow text-2xl font-bold mb-3">02</div>
         <h3 class="text-lg font-bold mb-1">Envíos Rápidos</h3>
-        <p class="text-gray-400 text-xs leading-relaxed">Envíos a todo el país y entregas coordinadas en el área de AMBA.</p>
+        <p class="text-gray-400 text-xs leading-relaxed">
+          Envíos a todo el país y entregas coordinadas en el área de AMBA.
+        </p>
       </div>
 
       <div class="card bg-[#1C1C1C] p-6 rounded-2xl border border-white/5 opacity-0 transform translate-y-8">
         <div class="accent-yellow text-2xl font-bold mb-3">03</div>
         <h3 class="text-lg font-bold mb-1">Compra Transparente</h3>
-        <p class="text-gray-400 text-xs leading-relaxed">Atención personalizada y directa por DM de Instagram o WhatsApp.</p>
+        <p class="text-gray-400 text-xs leading-relaxed">
+          Atención personalizada y directa por DM de Instagram o WhatsApp.
+        </p>
       </div>
+
     </div>
   </section>
+
 
   <!-- 3. Catálogo de Productos -->
-  <section id="catalogo" class="py-20 px-6 max-w-6xl mx-auto border-t border-white/10">
-    <h2 class="text-2xl font-bold mb-4 text-center tracking-wide">CATÁLOGO DESTACADO</h2>
-    <p class="text-gray-400 text-center text-sm mb-12">Precios en pesos argentinos (ARS) · Pedidos por mensaje directo</p>
+  <section
+    id="catalogo"
+    class="py-20 px-6 max-w-6xl mx-auto border-t border-white/10"
+  >
+
+    <h2 class="text-2xl font-bold mb-4 text-center tracking-wide">
+      CATÁLOGO DESTACADO
+    </h2>
+
+    <p class="text-gray-400 text-center text-sm mb-12">
+      Precios en pesos argentinos (ARS) · Pedidos por mensaje directo
+    </p>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <!-- Producto 1: Fundas -->
+
+
+      <!-- PRODUCTO 1: FUNDAS -->
       <div class="product-card bg-[#1C1C1C] rounded-2xl p-6 border border-white/5 flex flex-col justify-between opacity-0">
+
         <div>
+
           <div class="w-full h-56 bg-[#111] rounded-xl flex items-center justify-center p-4 mb-4 overflow-hidden">
-         <img src="img/funda-iphone.png" style="width:300px; height:300px;">
-            </div>
-          <span class="text-xs text-gray-500 uppercase font-mono">Protección Premium</span>
-          <h3 class="text-xl font-bold my-1">Fundas de iPhone</h3>
-          <p class="text-xs text-gray-400 mb-4">Excelente calidad y protección contra caídas. Disponibles en varios colores.</p>
+
+            <img
+              src="img/funda-iphone.png"
+              alt="Fundas de iPhone"
+              class="product-image hover:scale-105 transition duration-300"
+            >
+
+          </div>
+
+          <span class="text-xs text-gray-500 uppercase font-mono">
+            Protección Premium
+          </span>
+
+          <h3 class="text-xl font-bold my-1">
+            Fundas de iPhone
+          </h3>
+
+          <p class="text-xs text-gray-400 mb-4">
+            Excelente calidad y protección contra caídas. Disponibles en varios colores.
+          </p>
+
         </div>
+
         <div>
-          <div class="text-2xl font-extrabold accent-yellow mb-4">6.500 ARS</div>
-          <a href="https://ig.me/m/urban_nexus.store" target="_blank" class="block text-center w-full bg-white text-black text-xs font-bold py-3 rounded-xl hover:bg-gray-200 transition">Comprar por DM</a>
+
+          <div class="text-2xl font-extrabold accent-yellow mb-4">
+            6.500 ARS
+          </div>
+
+          <a
+            href="https://ig.me/m/urban_nexus.store"
+            target="_blank"
+            class="block text-center w-full bg-white text-black text-xs font-bold py-3 rounded-xl hover:bg-gray-200 transition"
+          >
+            Comprar por DM
+          </a>
+
         </div>
+
       </div>
 
-      <!-- Producto 2: AirPods -->
+
+      <!-- PRODUCTO 2: AIRPODS -->
       <div class="product-card bg-[#1C1C1C] rounded-2xl p-6 border border-white/10 flex flex-col justify-between relative opacity-0">
-        <span class="absolute top-4 right-4 bg-accent-yellow text-black font-bold text-[10px] px-2 py-1 rounded-md uppercase z-10">MÁS VENDIDO</span>
+
+        <span class="absolute top-4 right-4 bg-accent-yellow text-black font-bold text-[10px] px-2 py-1 rounded-md uppercase z-10">
+          MÁS VENDIDO
+        </span>
+
         <div>
+
           <div class="w-full h-56 bg-[#111] rounded-xl flex items-center justify-center p-4 mb-4 overflow-hidden">
-            <img src="./img/airpods-pro.png" alt="AirPods Pro Con ANC" class="h-full object-contain hover:scale-105 transition duration-300">
+
+            <img
+              src="img/airpods-pro.png"
+              alt="AirPods Pro Con ANC"
+              class="product-image hover:scale-105 transition duration-300"
+            >
+
           </div>
-          <span class="text-xs text-gray-500 uppercase font-mono">Audio Pro</span>
-          <h3 class="text-xl font-bold my-1">AirPods Pro (Con ANC)</h3>
-          <p class="text-xs text-gray-400 mb-4">Cancelación de ruido activa, modo ambiente y sonido inmersivo.</p>
+
+          <span class="text-xs text-gray-500 uppercase font-mono">
+            Audio Pro
+          </span>
+
+          <h3 class="text-xl font-bold my-1">
+            AirPods Pro (Con ANC)
+          </h3>
+
+          <p class="text-xs text-gray-400 mb-4">
+            Cancelación de ruido activa, modo ambiente y sonido inmersivo.
+          </p>
+
         </div>
+
         <div>
-          <div class="text-2xl font-extrabold accent-yellow mb-4">40.000 ARS</div>
-          <a href="https://ig.me/m/urban_nexus.store" target="_blank" class="block text-center w-full bg-accent-yellow text-black text-xs font-bold py-3 rounded-xl hover:bg-yellow-300 transition">Comprar por DM</a>
+
+          <div class="text-2xl font-extrabold accent-yellow mb-4">
+            40.000 ARS
+          </div>
+
+          <a
+            href="https://ig.me/m/urban_nexus.store"
+            target="_blank"
+            class="block text-center w-full bg-accent-yellow text-black text-xs font-bold py-3 rounded-xl hover:bg-yellow-300 transition"
+          >
+            Comprar por DM
+          </a>
+
         </div>
+
       </div>
 
-      <!-- Producto 3: Cargador -->
+
+      <!-- PRODUCTO 3: CARGADOR -->
       <div class="product-card bg-[#1C1C1C] rounded-2xl p-6 border border-white/5 flex flex-col justify-between opacity-0">
+
         <div>
+
           <div class="w-full h-56 bg-[#111] rounded-xl flex items-center justify-center p-4 mb-4 overflow-hidden">
-            <img src="./img/combo-cargador.png" alt="Combo Cable y Cabezal" class="h-full object-contain hover:scale-105 transition duration-300">
+
+            <img
+              src="img/combo-cargador.png"
+              alt="Combo Cable y Cabezal"
+              class="product-image hover:scale-105 transition duration-300"
+            >
+
           </div>
-          <span class="text-xs text-gray-500 uppercase font-mono">Accesorios</span>
-          <h3 class="text-xl font-bold my-1">Combo Cable + Cabezal</h3>
-          <p class="text-xs text-gray-400 mb-4">Carga rápida para tu celular, seguro y resistente.</p>
+
+          <span class="text-xs text-gray-500 uppercase font-mono">
+            Accesorios
+          </span>
+
+          <h3 class="text-xl font-bold my-1">
+            Combo Cable + Cabezal
+          </h3>
+
+          <p class="text-xs text-gray-400 mb-4">
+            Carga rápida para tu celular, seguro y resistente.
+          </p>
+
         </div>
+
         <div>
-          <div class="text-2xl font-extrabold accent-yellow mb-4">15.000 ARS</div>
-          <a href="https://ig.me/m/urban_nexus.store" target="_blank" class="block text-center w-full bg-white text-black text-xs font-bold py-3 rounded-xl hover:bg-gray-200 transition">Comprar por DM</a>
+
+          <div class="text-2xl font-extrabold accent-yellow mb-4">
+            15.000 ARS
+          </div>
+
+          <a
+            href="https://ig.me/m/urban_nexus.store"
+            target="_blank"
+            class="block text-center w-full bg-white text-black text-xs font-bold py-3 rounded-xl hover:bg-gray-200 transition"
+          >
+            Comprar por DM
+          </a>
+
         </div>
+
       </div>
 
     </div>
   </section>
+
 
   <!-- Footer -->
   <footer class="py-12 text-center text-xs text-gray-500 border-t border-white/10">
-    <p class="mb-2">Urban Nexus Store · Buenos Aires, Argentina</p>
-    <a href="https://instagram.com/urban_nexus.store" target="_blank" class="text-gray-300 hover:text-white transition">@urban_nexus.store</a>
+
+    <p class="mb-2">
+      Urban Nexus Store · Buenos Aires, Argentina
+    </p>
+
+    <a
+      href="https://instagram.com/urban_nexus.store"
+      target="_blank"
+      class="text-gray-300 hover:text-white transition"
+    >
+      @urban_nexus.store
+    </a>
+
   </footer>
+
 
   <!-- Animaciones GSAP -->
   <script>
+
     gsap.registerPlugin(ScrollTrigger);
 
+
     // Animación Hero
-    gsap.to("#hero-tag", { opacity: 1, duration: 0.8, delay: 0.1 });
-    gsap.to("#hero-title", { opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: "power2.out" });
-    gsap.to("#hero-sub", { opacity: 1, y: 0, duration: 0.8, delay: 0.5, ease: "power2.out" });
-    gsap.to("#hero-btn", { opacity: 1, duration: 0.8, delay: 0.7 });
+
+    gsap.to("#hero-tag", {
+      opacity: 1,
+      duration: 0.8,
+      delay: 0.1
+    });
+
+    gsap.to("#hero-title", {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      delay: 0.3,
+      ease: "power2.out"
+    });
+
+    gsap.to("#hero-sub", {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      delay: 0.5,
+      ease: "power2.out"
+    });
+
+    gsap.to("#hero-btn", {
+      opacity: 1,
+      duration: 0.8,
+      delay: 0.7
+    });
+
 
     // Animación Cards Garantía
+
     gsap.utils.toArray(".card").forEach((card, index) => {
+
       gsap.to(card, {
-        scrollTrigger: { trigger: card, start: "top 85%" },
-        opacity: 1, y: 0, duration: 0.6, delay: index * 0.15, ease: "power2.out"
+
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%"
+        },
+
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: index * 0.15,
+        ease: "power2.out"
+
       });
+
     });
 
+
     // Animación Catálogo
+
     gsap.utils.toArray(".product-card").forEach((prod, index) => {
+
       gsap.to(prod, {
-        scrollTrigger: { trigger: prod, start: "top 85%" },
-        opacity: 1, duration: 0.6, delay: index * 0.2, ease: "power2.out"
+
+        scrollTrigger: {
+          trigger: prod,
+          start: "top 85%"
+        },
+
+        opacity: 1,
+        duration: 0.6,
+        delay: index * 0.2,
+        ease: "power2.out"
+
       });
+
     });
+
   </script>
+
 </body>
 </html>
