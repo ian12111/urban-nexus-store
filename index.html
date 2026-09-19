@@ -1,406 +1,239 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Urban Nexus Store | Tecnología práctica y accesible</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- GSAP + ScrollTrigger para animaciones -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-  <style>
-    body {
-      background-color: #0A0A0A;
-      color: #FFFFFF;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      overflow-x: hidden;
-    }
-
-    .accent-yellow {
-      color: #FFE44D;
-    }
-
-    .bg-accent-yellow {
-      background-color: #FFE44D;
-    }
-
-    .border-yellow {
-      border-color: #FFE44D;
-    }
-
-    /* Imágenes de productos */
-    .product-image {
-      max-width: 85%;
-      max-height: 85%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Estudiantil - Misión UX Web</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #2d3748;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, #2b6cb0, #3182ce);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .user-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        main {
+            flex-grow: 1;
+            max-width: 900px;
+            width: 100%;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .announcement-banner {
+            background-color: #feebc8;
+            color: #744210;
+            padding: 15px 20px;
+            font-size: 0.95rem;
+            border-left: 6px solid #d69e2e;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .ux-card {
+            background-color: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .ux-card:hover {
+            transform: translateY(-5px);
+            background-color: #ebf8ff;
+            border-color: #3182ce;
+            box-shadow: 0 10px 20px rgba(49,130,206,0.15);
+        }
+        .ux-card .icon-box {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .ux-card span {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #2d3748;
+        }
+        /* Vistas internas de la página web */
+        .view-section {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .view-section.active {
+            display: block;
+        }
+        .view-title {
+            font-size: 1.4rem;
+            color: #2b6cb0;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        .item-list {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+        .back-btn {
+            background-color: #4a5568;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.2s;
+            font-size: 0.95rem;
+        }
+        .back-btn:hover {
+            background-color: #2d3748;
+        }
+        footer {
+            background-color: #2d3748;
+            color: #a0aec0;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+    </style>
 </head>
+<body>
 
-<body class="antialiased">
-
-  <!-- Navbar Fija -->
-  <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-black/80 backdrop-blur-md border-b border-white/10">
-    <span class="text-lg font-bold tracking-widest text-white">
-      URBAN NEXUS
-    </span>
-
-    <a
-      href="https://ig.me/m/urban_nexus.store"
-      target="_blank"
-      class="bg-accent-yellow text-black text-sm font-bold px-4 py-2 rounded-full hover:bg-yellow-300 transition"
-    >
-      Pedir por DM
-    </a>
-  </nav>
-
-
-  <!-- 1. Hero Section -->
-  <section class="h-screen flex flex-col justify-center items-center text-center px-4 relative">
-
-    <span
-      id="hero-tag"
-      class="text-xs uppercase tracking-widest text-gray-400 mb-2 opacity-0"
-    >
-      [ BUENOS AIRES · AMBA ]
-    </span>
-
-    <h1
-      id="hero-title"
-      class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 opacity-0 transform translate-y-8"
-    >
-      TECNOLOGÍA PRÁCTICA <br>
-      <span class="accent-yellow">Y ACCESIBLE</span>
-    </h1>
-
-    <p
-      id="hero-sub"
-      class="text-gray-400 text-sm md:text-lg max-w-lg mb-8 opacity-0 transform translate-y-8"
-    >
-      Garantía de +30 días y envíos a todo el país.
-    </p>
-
-    <a
-      id="hero-btn"
-      href="#catalogo"
-      class="border border-white/20 hover:border-white text-white text-sm px-8 py-3 rounded-full font-semibold transition opacity-0"
-    >
-      Ver Catálogo ↓
-    </a>
-
-  </section>
-
-
-  <!-- 2. Sección de Garantías -->
-  <section class="py-20 px-6 max-w-5xl mx-auto border-t border-white/10">
-
-    <h2 class="text-2xl font-bold mb-12 text-center tracking-wide">
-      EL ESTÁNDAR NEXUS
-    </h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <div class="card bg-[#1C1C1C] p-6 rounded-2xl border border-white/5 opacity-0 transform translate-y-8">
-        <div class="accent-yellow text-2xl font-bold mb-3">01</div>
-        <h3 class="text-lg font-bold mb-1">Garantía +30 Días</h3>
-        <p class="text-gray-400 text-xs leading-relaxed">
-          Respaldo directo ante cualquier fallo técnico. Probamos el producto antes de despacharlo.
-        </p>
-      </div>
-
-      <div class="card bg-[#1C1C1C] p-6 rounded-2xl border border-white/5 opacity-0 transform translate-y-8">
-        <div class="accent-yellow text-2xl font-bold mb-3">02</div>
-        <h3 class="text-lg font-bold mb-1">Envíos Rápidos</h3>
-        <p class="text-gray-400 text-xs leading-relaxed">
-          Envíos a todo el país y entregas coordinadas en el área de AMBA.
-        </p>
-      </div>
-
-      <div class="card bg-[#1C1C1C] p-6 rounded-2xl border border-white/5 opacity-0 transform translate-y-8">
-        <div class="accent-yellow text-2xl font-bold mb-3">03</div>
-        <h3 class="text-lg font-bold mb-1">Compra Transparente</h3>
-        <p class="text-gray-400 text-xs leading-relaxed">
-          Atención personalizada y directa por DM de Instagram o WhatsApp.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- 3. Catálogo de Productos -->
-  <section
-    id="catalogo"
-    class="py-20 px-6 max-w-6xl mx-auto border-t border-white/10"
-  >
-
-    <h2 class="text-2xl font-bold mb-4 text-center tracking-wide">
-      CATÁLOGO DESTACADO
-    </h2>
-
-    <p class="text-gray-400 text-center text-sm mb-12">
-      Precios en pesos argentinos (ARS) · Pedidos por mensaje directo
-    </p>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-
-      <!-- PRODUCTO 1: FUNDAS -->
-      <div class="product-card bg-[#1C1C1C] rounded-2xl p-6 border border-white/5 flex flex-col justify-between opacity-0">
-
+    <!-- Encabezado de la Página Web -->
+    <header>
         <div>
+            <h1>Portal Escolar Institucional</h1>
+            <p style="font-size: 0.85rem; opacity: 0.9;">Solución UX — 4to Año</p>
+        </div>
+        <div class="user-badge">👤 Alumno: Lucas</div>
+    </header>
 
-          <div class="w-full h-56 bg-[#111] rounded-xl flex items-center justify-center p-4 mb-4 overflow-hidden">
+    <!-- Contenido Principal -->
+    <main>
 
-            <img
-              src="img/funda-iphone.png"
-              alt="Fundas de iPhone"
-              class="product-image hover:scale-75 transition duration-300"
-            >
+        <!-- VISTA 1: INICIO (HOME) -->
+        <div id="view-home" class="view-section active">
+            <div class="announcement-banner">
+                <span style="font-size: 1.5rem;">⚠️</span>
+                <div><strong>Aviso Urgente:</strong> Cierre de carga de notas del trimestre este viernes sin excepción.</div>
+            </div>
 
-          </div>
-
-          <span class="text-xs text-gray-500 uppercase font-mono">
-            Protección Premium
-          </span>
-
-          <h3 class="text-xl font-bold my-1">
-            Fundas de iPhone
-          </h3>
-
-          <p class="text-xs text-gray-400 mb-4">
-            Excelente calidad y protección contra caídas. Disponibles en varios colores.
-          </p>
-
+            <div class="dashboard-grid">
+                <div class="ux-card" onclick="switchView('notas')">
+                    <div class="icon-box">📘</div>
+                    <span>Mis Notas</span>
+                </div>
+                <div class="ux-card" onclick="switchView('examenes')">
+                    <div class="icon-box">📅</div>
+                    <span>Exámenes</span>
+                </div>
+                <div class="ux-card" onclick="switchView('tareas')">
+                    <div class="icon-box">📂</div>
+                    <span>Tareas</span>
+                </div>
+                <div class="ux-card" onclick="switchView('avisos')">
+                    <div class="icon-box">🏫</div>
+                    <span>Avisos</span>
+                </div>
+            </div>
         </div>
 
-        <div>
-
-          <div class="text-2xl font-extrabold accent-yellow mb-4">
-            6.500 ARS
-          </div>
-
-          <a
-            href="https://ig.me/m/urban_nexus.store"
-            target="_blank"
-            class="block text-center w-full bg-white text-black text-xs font-bold py-3 rounded-xl hover:bg-gray-200 transition"
-          >
-            Comprar por DM
-          </a>
-
+        <!-- VISTA 2: MIS NOTAS -->
+        <div id="view-notas" class="view-section">
+            <h2 class="view-title">📘 Mis Calificaciones</h2>
+            <div class="item-list"><strong>Matemáticas:</strong> 8 (Ocho) - 2do Trimestre</div>
+            <div class="item-list"><strong>Prácticas del Lenguaje:</strong> 9 (Nueve) - 2do Trimestre</div>
+            <div class="item-list"><strong>NTICx:</strong> 10 (Diez) - Proyecto UX</div>
+            <div class="item-list"><strong>Historia:</strong> 7 (Siete) - 2do Trimestre</div>
+            <button class="back-btn" onclick="switchView('home')">← Volver al Inicio</button>
         </div>
 
-      </div>
-
-
-      <!-- PRODUCTO 2: AIRPODS -->
-      <div class="product-card bg-[#1C1C1C] rounded-2xl p-6 border border-white/10 flex flex-col justify-between relative opacity-0">
-
-        <span class="absolute top-4 right-4 bg-accent-yellow text-black font-bold text-[10px] px-2 py-1 rounded-md uppercase z-10">
-          MÁS VENDIDO
-        </span>
-
-        <div>
-
-          <div class="w-full h-56 bg-[#111] rounded-xl flex items-center justify-center p-4 mb-4 overflow-hidden">
-
-            <img
-              src="img/airpods-pro.png"
-              alt="AirPods Pro Con ANC"
-              class="product-image hover:scale-105 transition duration-300"
-            >
-
-          </div>
-
-          <span class="text-xs text-gray-500 uppercase font-mono">
-            Audio Pro
-          </span>
-
-          <h3 class="text-xl font-bold my-1">
-            AirPods Pro (Con ANC)
-          </h3>
-
-          <p class="text-xs text-gray-400 mb-4">
-            Cancelación de ruido activa, modo ambiente y sonido inmersivo.
-          </p>
-
+        <!-- VISTA 3: EXÁMENES -->
+        <div id="view-examenes" class="view-section">
+            <h2 class="view-title">📅 Calendario de Exámenes</h2>
+            <div class="item-list"><strong>Física:</strong> Miércoles 24/09 - 08:00 hs</div>
+            <div class="item-list"><strong>Inglés:</strong> Lunes 29/09 - 10:00 hs</div>
+            <div class="item-list"><strong>Geografía:</strong> Jueves 02/10 - 08:00 hs</div>
+            <button class="back-btn" onclick="switchView('home')">← Volver al Inicio</button>
         </div>
 
-        <div>
-
-          <div class="text-2xl font-extrabold accent-yellow mb-4">
-            40.000 ARS
-          </div>
-
-          <a
-            href="https://ig.me/m/urban_nexus.store"
-            target="_blank"
-            class="block text-center w-full bg-accent-yellow text-black text-xs font-bold py-3 rounded-xl hover:bg-yellow-300 transition"
-          >
-            Comprar por DM
-          </a>
-
+        <!-- VISTA 4: TAREAS -->
+        <div id="view-tareas" class="view-section">
+            <h2 class="view-title">📂 Tareas y Trabajos Prácticos</h2>
+            <div class="item-list"><strong>Biografía Celular:</strong> Entregar informe en PDF (Pendiente)</div>
+            <div class="item-list"><strong>TP NTICx:</strong> Prototipo en Canva y Código (En proceso)</div>
+            <button class="back-btn" onclick="switchView('home')">← Volver al Inicio</button>
         </div>
 
-      </div>
-
-
-      <!-- PRODUCTO 3: CARGADOR -->
-      <div class="product-card bg-[#1C1C1C] rounded-2xl p-6 border border-white/5 flex flex-col justify-between opacity-0">
-
-        <div>
-
-          <div class="w-full h-56 bg-[#111] rounded-xl flex items-center justify-center p-4 mb-4 overflow-hidden">
-
-            <img
-              src="img/combo-cargador.png"
-              alt="Combo Cable y Cabezal"
-              class="product-image hover:scale-105 transition duration-300"
-            >
-
-          </div>
-
-          <span class="text-xs text-gray-500 uppercase font-mono">
-            Accesorios
-          </span>
-
-          <h3 class="text-xl font-bold my-1">
-            Combo Cable + Cabezal
-          </h3>
-
-          <p class="text-xs text-gray-400 mb-4">
-            Carga rápida para tu celular, seguro y resistente.
-          </p>
-
+        <!-- VISTA 5: AVISOS -->
+        <div id="view-avisos" class="view-section">
+            <h2 class="view-title">🏫 Avisos Institucionales</h2>
+            <div class="item-list"><strong>Jornada Recreativa:</strong> Viernes próximo suspensión de clases por evento interno.</div>
+            <div class="item-list"><strong>Biblioteca:</strong> Nuevos horarios de préstamo de libros disponibles.</div>
+            <button class="back-btn" onclick="switchView('home')">← Volver al Inicio</button>
         </div>
 
-        <div>
+    </main>
 
-          <div class="text-2xl font-extrabold accent-yellow mb-4">
-            15.000 ARS
-          </div>
+    <!-- Pie de página -->
+    <footer>
+        Proyecto UX Design Thinking — NTICx © 2026 | Sistema Diseñado para Estudiantes
+    </footer>
 
-          <a
-            href="https://ig.me/m/urban_nexus.store"
-            target="_blank"
-            class="block text-center w-full bg-white text-black text-xs font-bold py-3 rounded-xl hover:bg-gray-200 transition"
-          >
-            Comprar por DM
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- Footer -->
-  <footer class="py-12 text-center text-xs text-gray-500 border-t border-white/10">
-
-    <p class="mb-2">
-      Urban Nexus Store · Buenos Aires, Argentina
-    </p>
-
-    <a
-      href="https://instagram.com/urban_nexus.store"
-      target="_blank"
-      class="text-gray-300 hover:text-white transition"
-    >
-      @urban_nexus.store
-    </a>
-
-  </footer>
-
-
-  <!-- Animaciones GSAP -->
-  <script>
-
-    gsap.registerPlugin(ScrollTrigger);
-
-
-    // Animación Hero
-
-    gsap.to("#hero-tag", {
-      opacity: 1,
-      duration: 0.8,
-      delay: 0.1
-    });
-
-    gsap.to("#hero-title", {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      delay: 0.3,
-      ease: "power2.out"
-    });
-
-    gsap.to("#hero-sub", {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      delay: 0.5,
-      ease: "power2.out"
-    });
-
-    gsap.to("#hero-btn", {
-      opacity: 1,
-      duration: 0.8,
-      delay: 0.7
-    });
-
-
-    // Animación Cards Garantía
-
-    gsap.utils.toArray(".card").forEach((card, index) => {
-
-      gsap.to(card, {
-
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%"
-        },
-
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        delay: index * 0.15,
-        ease: "power2.out"
-
-      });
-
-    });
-
-
-    // Animación Catálogo
-
-    gsap.utils.toArray(".product-card").forEach((prod, index) => {
-
-      gsap.to(prod, {
-
-        scrollTrigger: {
-          trigger: prod,
-          start: "top 85%"
-        },
-
-        opacity: 1,
-        duration: 0.6,
-        delay: index * 0.2,
-        ease: "power2.out"
-
-      });
-
-    });
-
-  </script>
+    <script>
+        function switchView(viewName) {
+            const views = document.querySelectorAll('.view-section');
+            views.forEach(v => v.classList.remove('active'));
+            document.getElementById('view-' + viewName).classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
